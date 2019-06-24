@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>40</y>
+      <w>190</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Principal
+
+--
+
+--
+_+main(args: String[])_
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>240</y>
+      <w>120</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+TipoColorPin
+
+--
++BLANCO
++NEGRO
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>240</y>
+      <w>140</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enum&gt;&gt;
+TipoColorFicha
+
+--
++AMARILLO
++AZUL
++ROJO
++VERDE
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>40</y>
+      <w>270</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Tablero
+--
+-secrta: CombinacionSecreta
+-lineas: Linea[]
+
+--
++Tablero(secreta: CombinacionSecreta)
+-inicializarLineas()
++getLineas(): Linea[]
++mostrarSecreta(): String
++toString(): String
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>180</y>
+      <w>190</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Pin
+--
+-color: TipoColorPin
+
+--
++Pin(color: TipoColorPin)
++getColor(): TipoColorPin
++toString(): String
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>40</y>
+      <w>340</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>Partida
+--
+_-MININTENTOS: int=10_
+_-MAXINTENTOS: int=20_
+-jugadores: Jugador[]                     {NN} &lt;&lt;R&gt;&gt;
+-turno: int                                        {0-1}
+-tablero: Tablero                             {NN} &lt;&lt;R&gt;&gt;
+-secreta: CombinacionSecreta       {NN}  &lt;&lt;R&gt;&gt;
+-intentos: int
+-intento: int
+-tablas: boolean    
+
+--
++Partida(jugadores: Jugador[], intentos: int)
+-inicializarJugadores()
+-setIntentos()
++jugar()
+-generarCombinacionSecreta(): CombinacionSecreta
+-setTurno()
+-cambiarTurno()
+-esFinJuego(): boolean
+-leerCombinacionLinea(): CombinacionLinea
+-casos(ficha: String): TipoColorFicha
+-asignacionPines(c: CombinacionLinea)
+                                 : CombinacionPin
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>480</y>
+      <w>280</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Linea
+--
+-combiLinea: CombinacionLinea  {NN} &lt;&lt;R&gt;&gt;
+-combiPin: CombinacionPin         {NN} &lt;&lt;R&gt;&gt;
+
+--
++Linea()
++setCombinacionLinea()
++setCombinacionPin()
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>330</y>
+      <w>190</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Jugador
+--
+-alias: String   {NN, NM, NV}
+
+--
++Jugador()
+-setAlias()
++getAlias(): String
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>480</y>
+      <w>190</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Jugador
+--
+-alias: String   {NN, NM, NV}
+
+--
++Jugador()
+-setAlias()
++getAlias(): String
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>40</y>
+      <w>230</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Ficha
+--
+-color: TipoColorFicha    {NN, NM}
+
+--
++Ficha(color: TipoColorFicha)
+-setColor()
++getColor():TipoCoorFicha
++equals(o:Object): boolean
++hashCode(): int
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>240</y>
+      <w>230</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>CombinacionSecreta
+--
+-fichas: Ficha[]                      &lt;&lt;R&gt;&gt;
+-colores: TipoColorFicha[]    &lt;&lt;R&gt;&gt;
+
+--
++CombinacionSecreta()
+-crearFichas()
+-desordenar()
+-intercambiar()
++getFichas() :Ficha[]
++toString(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>500</x>
+      <y>480</y>
+      <w>170</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>CombinacionPin
+--
+-pines: Pin[]
+
+--
++CombinacionPin()
++colocar(p: Pin, pos: int)
++getPines(): Pin[]
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>480</y>
+      <w>170</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>CombinacionLinea
+--
+-fichas: Ficha[]
+
+--
++CombinacionLinea()
++colocar(f: Ficha, pos: int)
++getFichas(): Ficha[]
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>480</x>
+      <y>0</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_MASTERMIND V.0.1_
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
